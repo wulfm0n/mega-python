@@ -46,6 +46,20 @@ session = Session(hostname='10.3.3.254', community='fc360collector', version=2)
 
 # You may retrieve an individual OID using an SNMP GET
 location = session.get(('sysContact', '0'))
+device_version = session.get(('1.3.6.1.4.1.12356.101.4.1.1', '0'))
+
+# print (device_version)
+# print (type(device_version))
+print (device_version.value)
+if "5.6" in device_version.value:
+    print (" 5.6 code")
+    device_cpu = session.get(('1.3.6.1.4.1.12356.101.4.1.3', '0'))
+    device_memory_used = session.get(('1.3.6.1.4.1.12356.101.4.1.4', '0'))
+    print (device_memory_used.value + "memory used")
+    if int(device_memory_used.value) > 20:
+        print ("reboot the box")
+print (type(device_memory_used))
+print (device_memory_used)
 
 # print (dir(location))
 print ("The person to contact is " + str(location.value) + "[SNMP]")
