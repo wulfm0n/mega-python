@@ -51,6 +51,7 @@ device_version = session.get(('1.3.6.1.4.1.12356.101.4.1.1', '0'))
 # print (device_version)
 # print (type(device_version))
 print (device_version.value)
+# https://stackoverflow.com/questions/3437059/does-python-have-a-string-contains-substring-method
 if "5.6" in device_version.value:
     print (" 5.6 code")
     device_cpu = session.get(('1.3.6.1.4.1.12356.101.4.1.3', '0'))
